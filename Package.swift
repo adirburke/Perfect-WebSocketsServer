@@ -1,3 +1,5 @@
+// swift-tools-version:5.1
+
 //
 //  Package.swift
 //  PerfectExample-WebSocketsServer
@@ -21,11 +23,14 @@ import PackageDescription
 
 let package = Package(
 	name: "WebSocketsServer",
-	targets: [
-		
+	products: [
+		.executable(name:  "WebSocketsServer", targets: ["WebSocketsServer"]),
 	],
 	dependencies: [
-		.Package(url:"https://github.com/PerfectlySoft/Perfect-HTTPServer.git", majorVersion: 3),
-		.Package(url:"https://github.com/PerfectlySoft/Perfect-WebSockets.git", majorVersion: 3)
+		.package(url:"https://github.com/PerfectlySoft/Perfect-HTTPServer.git", from: "3.0.0"),
+		.package(url:"https://github.com/PerfectlySoft/Perfect-WebSockets.git", from: "3.0.0"),
+	],
+	targets: [
+		.target(name:  "WebSocketsServer", dependencies: ["PerfectHTTPServer", "PerfectWebSockets"]),
 	]
 )

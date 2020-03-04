@@ -83,6 +83,8 @@ class EchoHandler: WebSocketSessionHandler {
 			
 			// The data parameter might be nil here if either a timeout or a network error, such as the client disconnecting, occurred.
 			// By default there is no timeout.
+            print("Read msg: \(string) op: \(op) fin: \(fin)")
+            
 			guard let string = string else {
 				// This block will be executed if, for example, the browser window is closed.
 				socket.close()
@@ -90,7 +92,7 @@ class EchoHandler: WebSocketSessionHandler {
 			}
 			
 			// Print some information to the console for informational purposes.
-			print("Read msg: \(string) op: \(op) fin: \(fin)")
+			
 			
 			// Echo the data we received back to the client.
 			// Pass true for final. This will usually be the case, but WebSockets has the concept of fragmented messages.
